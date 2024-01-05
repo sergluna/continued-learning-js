@@ -47,32 +47,70 @@
 // // console.log(job);
 // // console.log(year);
 
-var me = 'Sergio';
-let job = 'Web dev';
-const year = 1991;
+// var me = 'Sergio';
+// let job = 'Web dev';
+// const year = 1991;
 
-// Hoisting with functions
+// // Hoisting with functions
 
-console.log(addDecl(2, 3));
-// console.log(addExpr(2, 3));
-// console.log(addArrow(2, 3));
+// console.log(addDecl(2, 3));
+// // console.log(addExpr(2, 3));
+// // console.log(addArrow(2, 3));
 
-function addDecl(a, b) {
-  return a + b;
-}
+// function addDecl(a, b) {
+//   return a + b;
+// }
 
-const addExpr = function (a, b) {
-  return a + b;
+// const addExpr = function (a, b) {
+//   return a + b;
+// };
+
+// var addArrow = (a, b) => a + b;
+
+// // Example
+// if (!numProducts) deleteShoppingcart();
+
+// // var is hoistied as undifined so the if above is executed
+// var numProducts = 10;
+
+// function deleteShoppingcart() {
+//   console.log('All products deleted');
+// }
+
+// global scope
+// console.log(this);
+
+// undifined
+const calcAge = function (birthYear) {
+  console.log(2037 - birthYear);
+  console.log(this);
 };
 
-var addArrow = (a, b) => a + b;
+calcAge(1991);
 
-// Example
-if (!numProducts) deleteShoppingcart();
+// global scope
+const calcAgeArrow = birthYear => {
+  console.log(2037 - birthYear);
+  console.log(this);
+};
 
-// var is hoistied as undifined so the if above is executed
-var numProducts = 10;
+calcAgeArrow(1991);
 
-function deleteShoppingcart() {
-  console.log('All products deleted');
-}
+const sergio = {
+  year: 1991,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+  },
+};
+
+sergio.calcAge();
+
+const maria = {
+  year: 2017,
+};
+
+maria.calcAge = sergio.calcAge;
+
+// this wll still point to maria because its the method that called it even though its in sergio object
+maria.calcAge();
