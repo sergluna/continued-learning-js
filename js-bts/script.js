@@ -81,36 +81,76 @@
 // console.log(this);
 
 // undifined
-const calcAge = function (birthYear) {
-  console.log(2037 - birthYear);
-  console.log(this);
-};
 
-calcAge(1991);
+// const calcAge = function (birthYear) {
+//   console.log(2037 - birthYear);
+//   console.log(this);
+// };
 
-// global scope
-const calcAgeArrow = birthYear => {
-  console.log(2037 - birthYear);
-  console.log(this);
-};
+// calcAge(1991);
 
-calcAgeArrow(1991);
+// // global scope
+// const calcAgeArrow = birthYear => {
+//   console.log(2037 - birthYear);
+//   console.log(this);
+// };
+
+// calcAgeArrow(1991);
+
+// sergio.calcAge();
+
+// const maria = {
+//   year: 2017,
+// };
+
+// maria.calcAge = sergio.calcAge;
+
+// // this wll still point to maria because its the method that called it even though its in sergio object
+// maria.calcAge();
+
+var firstName = 'Matilda';
 
 const sergio = {
+  firstName: 'Sergio',
   year: 1991,
   calcAge: function () {
-    console.log(this);
+    // console.log(this);
     console.log(2037 - this.year);
+
+    // Solution 1, ES6
+    // const self = this;
+    // const isMillenial = function () {
+    //   console.log(self.year >= 1981 && self.year <= 1996);
+    //   // console.log(this.year >= 1981 && this.year <= 1996);
+    // };
+
+    const isMillenial = () => {
+      console.log(this);
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+
+    isMillenial();
+  },
+  greet: () => {
+    console.log(this);
+    console.log(`Hey ${this.firstName}`);
   },
 };
 
+sergio.greet();
 sergio.calcAge();
 
-const maria = {
-  year: 2017,
+// Arguments
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
 };
 
-maria.calcAge = sergio.calcAge;
+addExpr(2, 5);
 
-// this wll still point to maria because its the method that called it even though its in sergio object
-maria.calcAge();
+var addArrow = (a, b) => {
+  console.log(arguments);
+  return a + b;
+};
+
+addArrow(2, 5);
