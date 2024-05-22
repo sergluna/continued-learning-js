@@ -40,7 +40,70 @@ const restaurant = {
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your pasta with ${ing1}, ${ing2} and ${ing3}`);
+  },
 };
+
+// Old way of spreading
+const arr = [7, 8, 9];
+const oldWayArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(oldWayArr);
+
+//// ES6 with Spread operator, ...
+
+// wihout ... this will create an array inside of an array instead of spreading
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+// this logs each element in newArr
+console.log(...newArr);
+
+// you can take an array and spread inside of another to make a new arrray
+const newMenu = [...restaurant.mainMenu, "Sandwich"];
+console.log(newMenu);
+
+// Important use cases
+// Create Shallow Copies and Joining Arrays
+
+// Create copy
+const mainMenuCopy = [...restaurant.mainMenu];
+console.log(mainMenuCopy);
+
+// Joining
+const joinedMenu = [...mainMenuCopy, ...newMenu, ...restaurant.starterMenu];
+console.log(joinedMenu);
+
+// Iterables
+
+const str = "Sergio";
+const name = [...str, " ", "L."];
+console.log(name);
+
+// Prompt to gather info
+// const ingredients = [
+//   prompt("Let's make pasta! Ingredient 3 ?"),
+//   prompt("Let's make pasta! Ingredient 2 ?"),
+//   prompt("Let's make pasta! Ingredient 3 ?"),
+// ];
+
+// // calling the method from restaurant
+// restaurant.orderPasta(...ingredients);
+
+// Objects
+const newRestaurant = { ...restaurant, founder: "Sergio L.", foundedin: 1991 };
+console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = "Sergio's Bistro";
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
+
+/*
+////////////////////////////////////
+
+Destructuring Objects
 
 restaurant.orderDelivery({
   time: "22:30",
