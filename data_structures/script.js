@@ -44,7 +44,61 @@ const restaurant = {
   orderPasta: function (ing1, ing2, ing3) {
     console.log(`Here is your pasta with ${ing1}, ${ing2} and ${ing3}`);
   },
+  // stores first ingredient in mainIng and the rest are stored in an array
+  orderPizza: function (mainIng, ...otherIng) {
+    console.log(mainIng);
+    console.log(otherIng);
+  },
 };
+
+/////////////
+// Rest Pattern and Parameters
+/////////////
+
+// 1 Destructuring
+
+// This is SPREAD because is on the right side of =
+const arr = [1, 2, ...[3, 4]];
+
+// This is REST because on left side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+
+console.log(arr);
+console.log(a, b, others);
+
+// Using REST ad SPREAD, the spread operator must come last when destrcturing because JS wont know when to collect the remaining elements
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
+// Objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+// 2 Functions
+
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+
+add(2, 3);
+add(5, 3, 2, 7);
+
+// after x is spread into add they will be collected unto numbers array by rest parameter
+const x = [23, 4, 5];
+add(...x);
+
+restaurant.orderPizza("peperoni", "tomatoes", "mushrooms", "peppers");
+
+/*
+
+////////////////
+Spread Operator
+////////////////
 
 // Old way of spreading
 const arr = [7, 8, 9];
@@ -99,6 +153,8 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = "Sergio's Bistro";
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
+
+*/
 
 /*
 ////////////////////////////////////
