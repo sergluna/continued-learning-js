@@ -52,6 +52,46 @@ const restaurant = {
 };
 
 /////////////
+// Short Circuiting
+/////////////
+
+// OR Gates
+console.log("---- OR ----");
+// Boolean can use ANY data type, return ANY data type, short circuiting
+console.log(3 || "Sergio");
+console.log("" || "Sergio");
+console.log(true || 0);
+console.log(undefined || null);
+
+// Hello is the only truthy value, the rest are falsy
+console.log(undefined || 0 || "" || "Hello" || 23 || null);
+
+restaurant.numGuests = 23;
+const geusts = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(geusts);
+
+const geusts2 = restaurant.numGuests || 10;
+console.log(geusts2);
+
+// AND Gates
+console.log("---- AND ----");
+
+// both need to be true to return true
+console.log(0 && "Sergio"); // this returns false so it short circuits and return o
+console.log(7 && "Sergio"); // this returns true so it returns Sergio
+
+console.log("Hii" && 23 && null && "Sergio"); // this returns false and short circuits on null so returns null
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza("Peperoni", "Mushrooms");
+}
+
+// This evaluates the first part on the right side of && and if it exists it evaluates the left side
+restaurant.orderPizza && restaurant.orderPizza("Peperoni", "Mushrooms");
+
+/*
+
+/////////////
 // Rest Pattern and Parameters
 /////////////
 
@@ -93,6 +133,8 @@ const x = [23, 4, 5];
 add(...x);
 
 restaurant.orderPizza("peperoni", "tomatoes", "mushrooms", "peppers");
+
+*/
 
 /*
 
