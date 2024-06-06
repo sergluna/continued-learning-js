@@ -51,6 +51,53 @@ const restaurant = {
   },
 };
 
+///////////////
+///// Logical Assignment Operrator
+///////////////
+
+const rest1 = {
+  name: "Deli",
+  //numGuest: 20,
+  numGuest: 0,
+};
+
+const rest2 = {
+  name: "Pub",
+  owner: "Sergio",
+};
+
+////
+// OR Assingment Operator
+//// Assigns a value to a variable if it doesn't exist
+
+// rest1.numGuests = rest1.numGuest || 10;
+// rest2.numGuests = rest2.numGuest || 10;
+// these two methods perform the same tasks, the code below does it more efficient
+// rest1.numGuest ||= 10;
+// rest2.numGuest ||= 10;
+
+////
+// Nullish Assignment Operator (null or undefined)
+////
+
+rest1.numGuest ??= 10;
+rest2.numGuest ??= 10;
+
+////
+// AND Assignment Operator
+//// Assigns values to variables if they already exist
+
+// rest1.owner = rest1.owner && "<ANONYMOUS>;";
+// rest2.owner = rest2.owner && "<ANONYMOUS>;";
+
+rest1.owner &&= "<ANONYMOUS>";
+rest2.owner &&= "<ANONYMOUS>";
+
+console.log(rest1);
+console.log(rest2);
+
+/*
+
 ///////////
 // Nullish Values
 ///////////
