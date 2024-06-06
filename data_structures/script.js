@@ -51,6 +51,20 @@ const restaurant = {
   },
 };
 
+///////////
+// Nullish Values
+///////////
+
+restaurant.numGuests = 0;
+const geusts = restaurant.numGuests || 10;
+console.log(geusts);
+
+// Nullish: null or undefined (NOT 0 or '')
+const guestsCorrect = restaurant.numGuests ?? 10;
+console.log(guestsCorrect);
+
+/*
+
 /////////////
 // Short Circuiting
 /////////////
